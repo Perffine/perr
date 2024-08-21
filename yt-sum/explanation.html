@@ -20,44 +20,61 @@
 
     <h1>Yt-sum</h1>
 
-<b>Overview:</b>
-<br>
-Yt-sum is a YouTube Video Summarizer & Analyzer extension designed to summarize YouTube videos. 
-<br>
-<br>
-<b>Features:</b>
+    <b>Non AI Generated Gobbledegook Info for Nerds:</b>
+    <p>When user has a YouTube video with the transcript open, this will summarize, analyze bias, and provide counterpoints. Fact check and custom instructions are available. </p>
 
-<li>Instant Summaries: Get a concise summary of any YouTube video with a single click. Perfect for quickly understanding the core message without watching the entire video.</li>
+    <li>The transcript is scraped from the tab (no automated way is possible rn, currently google is blocking all ips that use these tools)</li>
 
-<li>Bias Detection: The AI can analyze the transcript for biases, helping you identify any potential slant or perspective within the content.</li>
+    <li>The video ID is taken from the open tab, and that is sent to an AWS Lambda function which gets the video's title and duration from the YouTube Data API.</li>
 
-<li>Google Search Integration: Automatically generate suggested Google search queries based on the video’s content to explore related perspectives and counterpoints.</li>
+    <li>The transcript is sent to the ChatGPT4o-mini API via an AWS Lambda function.</li>
 
-<li>Time-Saving: Ideal for students, researchers, and busy professionals who need to consume information quickly.</li>
+    <li>ChatGPT is instructed to summarize, provide bias analysis, and return a suitable Google search query</li>
 
-<li>Fact check option</li>
-<li>Custom instruction option</li>
+    <li>Chat's response is parsed for the query, and that query is sent to a Google custom search API via AWS Lambda function.</li>
 
-<li>Privacy-Focused: The extension processes the video transcripts locally and securely, ensuring your data remains private.</li>
-<br>
-<b>How It Works:</b>
+    <li>Data is then parsed for the results tab.</li>
+    <br>
+    <b>AI generated gobbledegook:</b>
+    <br><br>
+    <b>Overview:</b>
+    <br>
+    Yt-sum is a YouTube Video Summarizer & Analyzer extension designed to summarize YouTube videos. 
+    <br>
+    <br>
+    <b>Features:</b>
 
-<li>Add the extension to your Chrome browser.</li>
-<li>Navigate to a YouTube video you want to summarize or analyze.</li>
-<li>Open transcript</li>
-<li>Click the Extension Icon</li>
-<li>Choose options</li>
-<li>Extension will query ChatGPT 4o-mini for a summary, bias analysis, fact check and custom instructions if requested</li>
-<li>The summary and analysis are displayed in a new tab.</li>
+    <li>Instant Summaries: Get a concise summary of any YouTube video with a single click. Perfect for quickly understanding the core message without watching the entire video.</li>
 
-<br>
+    <li>Bias Detection: The AI can analyze the transcript for biases, helping you identify any potential slant or perspective within the content.</li>
 
-We're committed to improving your experience with regular updates and new features. If you have any suggestions or encounter any issues, please let us know through the support page.
-<br>
-<br>
-<b>Privacy Notice:</b>
+    <li>Google Search Integration: Automatically generate suggested Google search queries based on the video’s content to explore related perspectives and counterpoints.</li>
 
-Your privacy is important to us. This extension does not track your browsing activity or collect any personal information. All video analyses are processed securely via AWS Lambda servers. No data is collected or stored. I may in the future start to collect analytics for the purpose of improving this extension and will notify users when and if.
+    <li>Time-Saving: Ideal for students, researchers, and busy professionals who need to consume information quickly.</li>
+
+    <li>Fact check option</li>
+    <li>Custom instruction option</li>
+
+    <li>Privacy-Focused: The extension processes the video transcripts locally and securely, ensuring your data remains private.</li>
+    <br>
+    <b>How It Works:</b>
+
+    <li>Add the extension to your Chrome browser.</li>
+    <li>Navigate to a YouTube video you want to summarize or analyze.</li>
+    <li>Open transcript</li>
+    <li>Click the Extension Icon</li>
+    <li>Choose options</li>
+    <li>Extension will query ChatGPT 4o-mini for a summary, bias analysis, fact check and custom instructions if requested</li>
+    <li>The summary and analysis are displayed in a new tab.</li>
+
+    <br>
+
+    We're committed to improving your experience with regular updates and new features. If you have any suggestions or encounter any issues, please let us know through the support page.
+    <br>
+    <br>
+    <b>Privacy Notice:</b>
+
+    Your privacy is important to us. This extension does not track your browsing activity or collect any personal information. All video analyses are processed securely via AWS Lambda servers. No data is collected or stored. I may in the future start to collect analytics for the purpose of improving this extension and will notify users when and if.
 
     </div>
 </body>
