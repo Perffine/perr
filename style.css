@@ -1,10 +1,100 @@
-
- #text {
-   font-family: Arial, Helvetica, sans-serif;
-   font-size: medium;
+/* Option 1: Modern Sans-Serif */
+body {
+  font-family: 'Roboto', 'Arial', sans-serif;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f8f8f8;
+  color: #333;
 }
 
-#tou, #priv, #explanation  {
-  font-family: Arial, Helvetica, sans-serif;
+/* Option 2: Retro Terminal Look */
+/*
+body {
+  font-family: 'VT323', 'Courier New', monospace;
+  line-height: 1.4;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #0a0a0a;
+  color: #33ff33;
+}
+*/
+
+/* Option 3: Elegant Serif */
+/*
+body {
+  font-family: 'Merriweather', 'Georgia', serif;
+  line-height: 1.7;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f7f1;
+  color: #2c2c2c;
+}
+*/
+
+#text {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+a {
+  color: #0066cc;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #004080;
+}
+
+h1 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Text shadow effect for headings */
+h1, h2, h3 {
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+/* Subtle gradient background for main content */
+#text {
+  background: linear-gradient(to bottom, #ffffff, #f8f8f8);
+}
+
+/* Add a subtle hover effect to links */
+a {
+  position: relative;
+}
+
+a::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  bottom: 0;
+  left: 0;
+  background-color: #0066cc;
+  visibility: hidden;
+  transform: scaleX(0);
+  transition: all 0.3s ease-in-out;
+}
+
+a:hover::after {
+  visibility: visible;
+  transform: scaleX(1);
+}
+
+#tou, #priv, #explanation {
   font-size: medium;
 }
