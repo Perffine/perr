@@ -1,0 +1,35 @@
+<head>  
+    <meta charset="UTF-8">
+    <title>Yt-sum Explanation</title>
+    <link rel="stylesheet" href="../style.css">
+
+</head>
+
+<html>
+<body>
+
+
+<div id="explanation">
+
+    <a href="./priv.html" target="_blank">Yt-com Privacy Policy</a>
+    <br>
+    <a href="./tou.html" target="_blank">Yt-com Terms and Condtiions</a>
+    <br>
+    <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank">Google API Services User Data Policy</a>
+    
+
+    <h1>Yt-com</h1>
+
+    <b>Non AI Generated Gobbledegook Info for Nerds:</b>
+    <p>When user has a YouTube video open, this will summarize/analyze the comments section according to the user instructions.</p>
+
+
+    <li>The video ID is taken from the open tab, and that is sent to an AWS Lambda function which gets the video's title from the YouTube Data API.</li>
+
+    <li>The comments section is fetched via Youtube Data API via AWS Lambda function.</li>
+
+    <li>After the user chooses their options, the comments are sent to ChatGPT4o-mini API via an AWS Lambda function.</li>
+
+    <li>Returned data is then parsed for the results tab.</li>
+</body>
+</html>
