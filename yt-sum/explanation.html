@@ -1,6 +1,6 @@
 <head>  
     <meta charset="UTF-8">
-    <title>Yt-sum Explanation</title>
+    <title>yu2bias Explanation</title>
     <link rel="stylesheet" href="../style.css">
 
 </head>
@@ -11,35 +11,31 @@
 
 <div id="explanation">
 
-    <a href="./priv.html" target="_blank">Yt-sum Privacy Policy</a>
+    <a href="./priv.html" target="_blank">yu2bias Privacy Policy</a>
     <br>
-    <a href="./tou.html" target="_blank">Yt-sum Terms and Condtiions</a>
+    <a href="./tou.html" target="_blank">yu2bias Terms and Condtiions</a>
     <br>
     <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank">Google API Services User Data Policy</a>
     
 
-    <h1>Yt-sum</h1>
+    <h1>yu2bias</h1>
+    
+    <h2>What it does</h2>
 
-    <b>Non AI Generated Gobbledegook Info for Nerds:</b>
-    <p>When user has a YouTube video with the transcript open, this will summarize, analyze bias, and provide counterpoints. Fact check and custom instructions are available. </p>
+    <p><b>yu2bias</b> will summarize Youtube videos, analyze bias, and provide video counterpoints for YouTube videos. Uses ChatGPT4o-mini, and Google custom search.</p>
 
-    <li>The transcript is scraped from the tab (no automated way is possible rn, currently google is blocking all ips that use these tools)</li>
+    <h3>Optional:</h3>
+    <li>Fact check</li>
+    <li>Logical fallacy check</li>
+    <li>Custom instructions</li>
+    <li>Comments section summary (up to 1000 comments)</li>
 
-    <li>The video ID is taken from the open tab, and that is sent to an AWS Lambda function which gets the video's title and duration from the YouTube Data API.</li>
-
-    <li>The transcript is sent to the ChatGPT4o-mini API via an AWS Lambda function.</li>
-
-    <li>ChatGPT is instructed to summarize, provide bias analysis, and return a suitable Google search query</li>
-
-    <li>Chat's response is parsed for the query, and that query is sent to a Google custom search API via AWS Lambda function.</li>
-
-    <li>Data is then parsed for the results tab.</li>
-    <br>
+<br>
     <b>AI generated gobbledegook:</b>
     <br><br>
     <b>Overview:</b>
     <br>
-    Yt-sum is a YouTube Video Summarizer & Analyzer extension designed to summarize YouTube videos. 
+    yu2bias is a YouTube Video Summarizer & Analyzer extension designed to summarize YouTube videos. 
     <br>
     <br>
     <b>Features:</b>
@@ -53,7 +49,9 @@
     <li>Time-Saving: Ideal for students, researchers, and busy professionals who need to consume information quickly.</li>
 
     <li>Fact check option</li>
+    <li>Logical fallacy check option</li>
     <li>Custom instruction option</li>
+    <li>Comments Section Summary (up to 1000 comments)</li>
 
     <li>Privacy-Focused: The extension processes the video transcripts locally and securely, ensuring your data remains private.</li>
     <br>
