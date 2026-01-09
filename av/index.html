@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AV Room Equipment Map</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      color: #1f2933;
+      background: #f8fafc;
+    }
+
+    header {
+      background: #0b6fa4;
+      color: #ffffff;
+      padding: 1.5rem 1rem;
+      text-align: center;
+    }
+
+    main {
+      max-width: 1240px;
+      padding: 1.5rem 1rem 3rem;
+      margin: 0 auto;
+    }
+
+    .map-wrapper {
+      position: relative; /* Ensure overlay positions relative to this container */
+      background: #ffffff;
+      border: 1px solid #d9e2ec;
+      border-radius: 10px;
+      box-shadow: 0 4px 18px rgba(15, 23, 42, 0.08);
+      padding: 1rem;
+    }
+
+    .map-wrapper img {
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+      border: 1px solid #d9e2ec;
+      display: block;
+    }
+
+    .overlay {
+      position: absolute;
+      top: calc(1rem + 40px); /* Account for toolbar height */
+      left: 1rem;
+      right: 1rem;
+      bottom: 1rem;
+      border-radius: 6px;
+      pointer-events: none; /* Allow clicks to pass through overlay itself */
+    }
+
+    .area-box {
+      pointer-events: auto; /* Re-enable clicks on the boxes */
+    }
+
+    .overlay:not(.visible) {
+      display: none;
+    }
+
+    .area-box {
+      position: absolute;
+      border: 2px dashed rgba(11, 111, 164, 0.9);
+      background: rgba(11, 111, 164, 0.12);
+      border-radius: 4px;
+      color: #0b6fa4;
+      font-weight: 700;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-end;
+      padding: 2px 6px;
+      cursor: pointer;
+    }
+
+    .toolbar {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .toolbar button {
+      background: #0b6fa4;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 0.5rem 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.12);
+    }
+
+    .toolbar button:hover {
+      background: #095884;
+    }
+
+    .intro {
+      margin-bottom: 1rem;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      color: #52606d;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>AV Room Equipment Guide</h1>
+    <p>Click the equipment for more info.</p>
+  </header>
+
+  <main>
+    <p class="intro">
+     
+    </p>
+
+    <div class="map-wrapper">
+      <div class="toolbar">
+        <button id="toggle-overlay" type="button">Show region outlines</button>
+      </div>
+      <img src="assets/IMG_5971.jpg" alt="AV room equipment overview" usemap="#equipment-map" width="1200" height="900" />
+      <div id="area-overlay" class="overlay" aria-hidden="true"></div>
+      <map name="equipment-map">
+        <area shape="rect" coords="0,320,100,730" href="1.html" alt="Equipment 1" title="Chair" />
+        <area shape="rect" coords="120,180,400,370" href="2.html" alt="Equipment 2" title="Light" />
+        <area shape="rect" coords="460,60,660,490" href="3.html" alt="Equipment 3" title="Tripod" />
+        <area shape="rect" coords="680,30,980,505" href="4.html" alt="Equipment 4" title="Mic Stands" />
+        <area shape="rect" coords="815,515,890,630" href="4.html" alt="Equipment 4" title="Mic Stands" />
+        <area shape="rect" coords="50,760,100,810" href="5.html" alt="Equipment 5" title="Dirty Floor" />
+
+        <area shape="rect" coords="270,530,380,640" href="10.html" alt="Equipment 10" title="Headphones" />
+  
+        <area shape="rect" coords="455,520,630,610" href="11.html" alt="Equipment 11" title="Audio Interfaces" />
+        <area shape="rect" coords="655,555,680,605" href="12.html" alt="Equipment 12" title="Camera Mount" />
+        <area shape="rect" coords="695,555,780,595" href="13.html" alt="Equipment 13" title="Mic Mounts" />
+        <area shape="rect" coords="150,675,300,855" href="14.html" alt="Equipment 14" title="Mic Cable" />
+        <area shape="rect" coords="320,675,420,875" href="15.html" alt="Equipment 15" title="USB cables" />
+
+        <area shape="rect" coords="440,630,600,700" href="16.html" alt="Equipment 16" title="Speaker Cables" />
+        <area shape="rect" coords="470,720,590,850" href="17.html" alt="Equipment 17" title="Microphones" />
+        <area shape="rect" coords="620,640,880,810" href="19.html" alt="Equipment 19" title="Cameras" />
+        <area shape="rect" coords="910,530,1040,830" href="20.html" alt="Equipment 20" title="Pop Filter" />
+      </map>
+    </div>
+
+    <p>Jan 8 2026</p>
+  </main>
+
+  <footer>
+    
+  </footer>
+
+  <script>
+    const overlay = document.getElementById("area-overlay");
+    const mapImage = document.querySelector(".map-wrapper img[usemap]");
+    const map = document.querySelector("map[name='equipment-map']");
+    const toggleButton = document.getElementById("toggle-overlay");
+
+    // Store original coordinates on first run
+    let originalCoords = null;
+
+    function saveOriginalCoords() {
+      if (originalCoords) return;
+      originalCoords = [];
+      map.querySelectorAll("area").forEach((area) => {
+        originalCoords.push({
+          element: area,
+          coords: area.coords
+        });
+      });
+    }
+
+    function rescaleImageMap() {
+      const rect = mapImage.getBoundingClientRect();
+      const baseWidth = Number(mapImage.getAttribute("width")) || mapImage.naturalWidth;
+      const baseHeight = Number(mapImage.getAttribute("height")) || mapImage.naturalHeight;
+      const scaleX = rect.width / baseWidth;
+      const scaleY = rect.height / baseHeight;
+
+      // console.log('Rescaling image map:');
+      // console.log('  Base dimensions:', baseWidth, 'x', baseHeight);
+      // console.log('  Rendered dimensions:', rect.width, 'x', rect.height);
+      // console.log('  Image position:', rect.left, ',', rect.top);
+      // console.log('  Scale factors:', scaleX, 'x', scaleY);
+
+      originalCoords.forEach(({ element, coords }) => {
+        const coordArray = coords.split(",").map(Number);
+        const scaledCoords = coordArray.map((coord, index) => {
+          return index % 2 === 0 ? Math.round(coord * scaleX) : Math.round(coord * scaleY);
+        });
+        if (element.title === "Dirty Floor") {
+          // console.log('  Dirty Floor - Original coords:', coords, '-> Scaled:', scaledCoords.join(","));
+        }
+        element.coords = scaledCoords.join(",");
+      });
+    }
+
+    function renderOverlay() {
+      console.log("render overlay")
+      const rect = mapImage.getBoundingClientRect();
+      const baseWidth = Number(mapImage.getAttribute("width")) || mapImage.naturalWidth;
+      const baseHeight = Number(mapImage.getAttribute("height")) || mapImage.naturalHeight;
+      const scaleX = rect.width / baseWidth;
+      const scaleY = rect.height / baseHeight;
+
+      overlay.innerHTML = "";
+
+      map.querySelectorAll("area[shape='rect']").forEach((area) => {
+        const coords = (originalCoords.find(oc => oc.element === area)?.coords || area.coords).split(",").map(Number);
+        if (coords.length !== 4) return;
+
+        const [x1, y1, x2, y2] = coords;
+        const box = document.createElement("div");
+        box.className = "area-box";
+        box.style.left = `${x1 * scaleX}px`;
+        box.style.top = `${y1 * scaleY}px`;
+        box.style.width = `${(x2 - x1) * scaleX}px`;
+        box.style.height = `${(y2 - y1) * scaleY}px`;
+        box.textContent = area.title || area.alt || "";
+
+        // Make overlay boxes clickable
+        box.addEventListener("click", () => {
+          window.location.href = area.href;
+        });
+
+        overlay.appendChild(box);
+      });
+    }
+
+    function updateLayout() {
+      console.log("update layout")
+      rescaleImageMap();
+      renderOverlay();
+    }
+
+    function toggleOverlay() {
+      console.log("toggle overlay")
+      overlay.classList.toggle("visible");
+      const isVisible = overlay.classList.contains("visible");
+      toggleButton.textContent = isVisible ? "Hide region outlines" : "Show region outlines";
+      console.log("toggle overlay .. isVisible = ", isVisible);
+    }
+
+    toggleButton.addEventListener("click", toggleOverlay);
+    window.addEventListener("resize", updateLayout);
+    mapImage.addEventListener("load", () => {
+      saveOriginalCoords();
+      // updateLayout();
+    });
+
+    // Initialize
+    saveOriginalCoords();
+    updateLayout();
+
+  </script>
+</body>
+</html>

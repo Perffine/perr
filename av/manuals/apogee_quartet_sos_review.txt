@@ -1,0 +1,819 @@
+ON TEST 
+
+
+S/O) 
+
+
+
+
+
+For Mac 
+
+
+This sleek 
+four-channel 
+interface and 
+monitor controller 
+embodies all the 
+quality and style 
+we've come to expect 
+from Apogee. 
+
+
+- 
+
+
+PAUL WHITE 
+
+
+pogee have both extremes of the 
+
+Mac-compatible audio interface 
+
+market covered, from their 
+desktop Duet and its siblings at one end of 
+the range, to their large-scale Symphony 
+systems at the other. That being the case, 
+it makes perfect sense for them to come 
+out with something that sits comfortably 
+between the two; something that’s still 
+affordable to the quality-conscious home 
+recording operator, but with enough I/O 
+to handle ensemble recording and, if need 
+be, surround mixing. That's exactly what the 
+
+
+Apogee Quartet £1259 
+PROS 
+
+
+e High-quality converters and mic preamps. 
+
+e Compact, elegant format. 
+
+e Integrated monitor controller and 
+headphone amp. 
+
+e Maestro software allows the setting up of 
+two different zero-latency monitor mixes. 
+
+
+CONS 
+
+
+e Adding an expander unit provides eight 
+more inputs, but no more outputs. 
+
+
+SUMMARY 
+The Quartet is a logical addition to the 
+
+
+Apogee interface range, and is well suited 
+to the quality-conscious project studio 
+owner who requires no more than 12 
+simultaneous inputs. 
+
+
+p di 
+
+
+Quartet is, but that’s not all it is, as it has an 
+integrated monitor controller too. 
+
+As the name suggests, the Quartet is 
+a four-channel interface, and while this 
+may not look exactly generous to those 
+who need to mic up a drum kit, a pair of 
+ADAT (S/MUX) ports allow eight further 
+channels to be added at sample rates of up 
+to 96kHz, using one of the many expander 
+units available, including Apogee’s own 
+Ensemble. This takes the maximum input 
+channel count to 12, which, being realistic, 
+is enough for most small studio recording 
+projects, even if they include a drum kit. 
+If no expansion is required, the Quartet 
+can run at sample rates up to 192kHz. 
+The Quartet will work with any Core 
+
+
+ANALOG IN 
+3 
+
+
+E a 
+kidal. | Ls RAAI 
+
+
+
+
+
+Apogee Quartet 
+
+
+USB Audio Interface 
+
+
+
+
+
+
+
+Audio compatible DAW running on an Intel 
+Mac (1.5GHz CPU or above). 
+
+
+Overview 
+
+
+The wedge-shaped, die-cast aluminium 
+hardware is sleek, surprisingly weighty, and 
+a perfect complement to the Duet and One 
+units, whose user interfaces share the same 
+single-knob paradigm. Its ‘QuickTouch’ 
+touch pads and displays are set into a single 
+black panel, and the whole design exudes 
+a stylish simplicity that is both elegant and 
+practical. Even the non-slip base is incredibly 
+effective — you really have to push hard to 
+make this unit move once it's positioned on 
+a smooth surface. 
+
+The Quartet features two colour screens, 
+similar in style to those used in the Duet, 
+for metering and status display (levels, 
+
+
+ANALOG OUT OPTICAL 
+1 3 TA 
+
+
+we GAT 
+We OW DCERY OW 
+
+
+The Quartet’s back panel features four ‘combi’ XLR/jack inputs, six analogue outputs on quarter-inch 
+jack sockets, ADAT input ports, USB ports for both MIDI and connection to the host computer, word 
+
+
+clock output, a ground terminal and cable clamp, and an input for the external power supply. 
+
+
+156 November 2012 / www.soundonsound.com 
+
+
+grouping, phase, muting, phantom power and Soft Limit). The 
+leftmost QuickTouch pads are numbered one to four for input 
+selection. Two more buttons select speaker or headphone 
+level adjustment and there's simultaneous metering for all 
+four inputs and the output levels. The single controller knob, 
+with its integral push-switch, is used to adjust all the variable 
+functions and is suitably large to use as a main volume control. 
+
+Apogee make a big deal about the low latency that can 
+be achieved with the Quartet: at 96kHz and at a buffer size 
+of 32 samples, latency is just 3.6ms — a full millisecond less 
+than the equivalent Firewire 400 setup. | used a buffer size of 
+64 samples at 44.1kHz for most of my tests and still couldn't 
+perceive any delay. Also of note is Soft Limit, Apogee’s 
+proprietary circuitry for subtly squashing the peaks of loud 
+signals to produce a more analogue-like saturation when the 
+maximum signal level is approached. This can be enabled or 
+disabled on an individual channel basis via the included (via 
+download) Maestro 2 software. 
+
+The Maestro 2 control software is an integral part of the 
+package. It has a straightforward, single-window interface and 
+is compatible with current Mac operating systems, as well as 
+Snow Leopard. Here you can configure the system, select the 
+input type, enable or disable Soft Limit on the inputs, and use 
+Maestro’s mixer section for low-latency monitoring. Assigning 
+speakers to touch pads and configuring the front-panel A, B 
+and C buttons is also done here. 
+
+
+Connectivity 
+
+
+The Quartet has six balanced output jacks that can be used in 
+pairs as three stereo speaker feeds, as a 5.1 feed, or as sends 
+to external equipment. There's also a separate headphone 
+output located on the right-hand side of the case, which has 
+full level control via the front panel, and that can be fed from 
+its own monitor mix if required. 
+
+A-D/D-A conversion is courtesy of Apogee’s respected 
+conversion technology, and the designers have paid a lot of 
+attention to providing really good quality mic preamps to do 
+their converters justice. These digitally controlled analogue 
+preamps, each fitted with a ‘combi’ XLR/jack input socket, 
+offer a very wide gain range of 0 to 75cB and have click-free 
+transitions as the gain is adjusted. Phantom power at the full 
+48 Volts is available for capacitor mics as you'd expect, and is 
+independently switchable for each input. 
+
+The USB port marked MIDI is configured only for Core 
+MIDI devices, not for general USB functions, presumably to 
+conserve bandwidth. While you could plug directly into your 
+computer for MIDI over USB, this approach saves using up 
+a port on your Mac. There’s a separate mini-USB socket for 
+connection to the host computer using the included cable. 
+
+Apogee have settled on the USB 2 protocol for connection 
+to the host computer, as in its current incarnation it is actually 
+faster than Firewire 400, and although USB 3 offers more 
+bandwidth, the designers tell me this wouldn't result in any 
+performance benefits. USB also seems likely to have a longer 
+life-span than Firewire now that Thunderbolt is on the scene. 
+
+Other rear-panel connections include an input for the 
+included power supply and a word clock output on a standard 
+BNC connector. A separate ground terminal (useful for 
+laptop-based systems) also includes a cable clip for the power 
+lead. The two ADAT ports allow S/MUX operation to double 
+up the sample rate to a maximum of 96kHz and are inputs » 
+
+
+www.soundonsound.com / November 2012 157 
+
+
+ON TEST 
+APOGEE QUARTET 
+
+
+S/O) 
+
+
+» only — you don't get any additional outputs 
+
+
+with an expander connected. 
+
+The Quartet always provides the master 
+clock when an expander unit is connected, 
+so the expander must be set to external 
+sync and, as the ADAT connection only 
+runs one way, a word clock cable must be 
+connected between the two. As with other 
+Apogee devices, the clock is designed 
+to offer a high degree of stability, though 
+how well an external device will lock to 
+this depends very much on its own clock 
+recovery circuitry. Still, there’s no point 
+buying Apogee if you're planning to hook it 
+up to something cheap and nasty! 
+
+
+Operation 
+
+
+When you plug in the Quartet, it is 
+recognised by Core Audio and basic 
+operation is possible, as the assignable 
+touch pads are preconfigured to Dim, Mute 
+and Clear Meters (the latter clearing the 
+red ‘Overs’ indicators at the top of each 
+meter indicating that a clip has occurred 
+since they were last reset). You will, however, 
+need to download the Maestro control 
+software from the Apogee web site in order 
+to make any changes or to switch on the 
+phantom power. | mention this only because 
+| received the physical unit for review shortly 
+before getting a link to the software, so 
+| had a while to play with it. 
+
+When the QuickTouch pads are used 
+for input, output or speaker-set selection, 
+the currently selected parameter is the 
+one adjusted via the controller knob. For 
+example, if you select an input, the knob 
+adjusts the preamp gain, whereas if you 
+select a speaker, it adjusts the speaker 
+volume. An LED ‘halo’ highlight ring appears 
+around the currently active touch pad, so 
+you always know what you’re adjusting. The 
+three rightmost touch pads (labelled A, B 
+and C and located above the rotary control) 
+are all user assignable, so you can decide 
+what you need them to do from a menu of 
+options shown in the Maestro software: sum 
+to mono, dim the levels, switch speaker sets 
+or clear the ‘overs’ indicator in the meters. 
+Up to three sets of stereo speakers can be 
+connected, or all the outputs may be used 
+
+
+Alternatives 
+
+
+In this price and quality range, the main 
+competition probably comes from RME, 
+but it’s also worth looking at Focusrite, 
+
+as they provide good-quality mics amps 
+
+in their interfaces. If you can cope with 
+fewer channels, I’d consider the Focusrite 
+Forte, reviewed elsewhere in this issue. If 
+single-knob operation is your thing, it’s also 
+worth looking at the MOTU Track 16. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Ow ees 
+
+
+r | 
+
+
+© 
+ix 
+
+
+
+
+
+
+
+
+on AxN ~N N us 
+a) fe) fe-) a ' an -) f.) 
+J w. J ‘eee d w 
+
+- =. =. =. a P “ -= =. =. =. 
+
+4 4 = 4 4 s 4 4 4 4 
+
+J “2 + ‘a “a “3 r 2 "2 
+
+a wt A “ > = a 
+E " - - - - - - = * 
+= d —t " "x = - <= “ +- 
+
+
+t 
+
+
+
+
+
+: r4 : r : ra : m g m £ m n i 3 0 bie ĉ ’ ce 
+TTE ECI SI SI CTIS CNTT Er Er Erm Os ee ee es ee 
+EN N EN om ~*~ N N i. l N N N 
+1.) fee) (+e) s. fse.) f=.) =e (=e) . 
+
+
+fe) 
+w 
+
+
+
+
+
+, — = S $ 
+= =- =. — — = = — =. 
+4 4 4 4 4 4 4 4 4! 
+? a Z] (Z) "3 ” ” 3 „i 
+Er af we ^ = > A a >| 
+= ~ ~ - » - » » æl 
+A os = - m - kad = 
+a - i - ; n 3 - $ > Š m j - 
+
+
+7 Lej -3 r. 
+
+
+ik 
+
+
+
+
+
+Sly et ee ee eee ee ee 
+
+
+The Mixer page in Apogee’s Maestro 2 control software. 
+
+
+to drive a single 5.1 system. You can also mix 
+and match the functionality by, for instance, 
+having two sets of speakers connected 
+
+and then using the remaining two outputs 
+
+to feed an outboard processor or provide 
+further monitor mixes. 
+
+When an input’'s gain is being adjusted, 
+the meter area on the front panel changes 
+to a gain-knob display, with further status 
+indicators showing Grouping, Soft Limit and 
+Polarity. Similarly, adjusting a speaker's level 
+shows a rotary display for the level value and 
+a speaker symbol, although a ‘Home Lock’ 
+option prevents the view from changing. 
+Once you stop turning the knob, the display 
+automatically reverts to metering after a few 
+seconds. These displays are pin sharp. 
+
+With the Maestro software's Input panel 
+open, you can also select the input type as 
+Line +4dBu, Line -10dBv, Mic or Instrument. 
+The appropriate symbol for each is shown 
+above the input meters, and when a stereo 
+recording is being made, channels can be 
+grouped so that their gains are adjusted 
+together. Polarity invert can also be 
+activated, along with Soft Limit, which is, 
+again, independent for each input. 
+
+The Maestro Mixer window is where you 
+can set up low-latency source monitoring 
+if required, although, as mentioned, with 
+a buffer setting of 64 | didn’t notice latency 
+being a problem. The Mixer page actually 
+shows two mixers, one above the other. This 
+means, for example, that if you need two 
+different monitor mixes while recording, 
+one can be assigned to feed the speakers 
+and one the headphones. Each mixer allows 
+you to balance any of the live inputs with 
+the sound coming back from your DAW, so 
+as long as you remember to turn down the 
+monitor level of any tracks you're currently 
+recording in your DAW’s mixer, you can have 
+latency-free monitoring. 
+
+Separate tabs open pages for viewing 
+Inputs, Outputs, Device Settings, Output 
+
+
+158 November 2012 / www.soundonsound.com 
+
+
+Routing, Mixer and System Setup. Device 
+Settings is where you select what those 
+three right-hand ABC buttons should 
+control, and you can also set the push-switch 
+in the rotary encoder to mute the speakers, 
+the phones, or both. 
+
+The Quartet comes with a quick-start 
+guide, and a comprehensive user manual 
+that details the setup procedure for all the 
+mainstream DAWS is available from the 
+Apogee web site, but if you've ever used an 
+audio interface before, you should have no 
+trouble finding your way around the Quartet. 
+
+
+Performance 
+
+
+My tests were made using Logic Pro. 
+Selecting the interface is done in the usual 
+Logic way, via audio preferences, which is 
+also where you set the buffer size. You can 
+name the inputs and outputs within Logic 
+if you feel the need to. In other DAWs, you 
+can uSually access such settings directly 
+from within Apogee’s own control panel, 
+but currently this doesn’t work for the 
+Quartet within Logic. 
+
+While, on paper, there are 
+better-specified converters if you're willing 
+to pay for them, it is probably fair to say 
+that the quality of Apogee’s is so good 
+that we're approaching the realm where 
+any further improvements are just for the 
+benefit of the test gear, rather than human 
+ears. Their converters also have a reputation 
+for sounding musical. With cheaper 
+interfaces, working at 96kHz often yields 
+a noticeable improvement in smoothness, 
+as it places fewer demands on their digital 
+filter sections, but in the case of the 
+Quartet, even working at 44.1kHz produces 
+creditably smooth and classy results. In fact, 
+on a recorded speech test | was hard pushed 
+to hear any significant sonic difference 
+between working at 44.1kHz and 96kHz. 
+
+The mic preamps are also worthy of 
+mention, as they are exceptionally clean 
+
+
+System Requirements 
+
+
+e Intel Mac with 1.5GHz processor or faster, 2GB RAM 
+minimum, 4GB recommended, OS 10.6.8 or higher. 
+
+e The Quartet works with any Core Audio compatible 
+application including Logic, GarageBand, MainStage, 
+Final Cut, Pro Tools, Live, Digital Performer, Studio One, 
+Cubase and Nuendo. 
+
+
+and sound very focused, producing outstanding results even 
+with dynamic microphones. Soft Limit is a nice touch, too, as 
+it helps avoid unpleasant-sounding overloads while lending 
+a slight analogue character to sounds as they approach the 
+maximum level the converters can handle. With this switched 
+on, it is very difficult to overcook the signal level. 
+
+| found the touch interface so intuitive that | hardly noticed 
+that there’s only one knob to adjust everything. Integration 
+with the Maestro software is smooth and seamless, and using 
+it to activate phantom power, polarity-invert switches and 
+suchlike is actually less of a chore than bending down to find 
+the physical switches on a conventional interface that might 
+be stuck in a rack an arm’s reach away. 
+
+| checked out the ADAT side of the unit using an external 
+eight-channel RME unit, and this locked to the Quartet with 
+no fuss. Its inputs showed up as numbers 5 to 12 in the system 
+and | was in business. 
+
+
+Impressions 
+
+
+We live in a world where the top professional studios use 
+pretty much the same computer/software systems as those 
+of us further down the food chain. The main area in which 
+pro studios are better specified than project studios is in 
+terms of what's hooked up to the front and back ends of the 
+computer, and the audio interface is a very big part of that. 
+Yes, you can buy an audio interface with twice the I/O at half 
+the price of the Quartet, but the converters and mic preamps 
+will probably not sound nearly as good. On many of them, 
+you can hear digital crosstalk and interference from the USB 
+connection grumbling away in the background if you need to 
+run the mic amps at a high gain setting, as you might when 
+using a ribbon mic. | tested for this on the Quartet. Recording 
+ambient room noise with a passive ribbon mic at very high 
+gain settings, and then normalising the result, showed up only 
+room sound and a little honest electronic hiss. There have 
+been occasions when trying this test with lesser interfaces 
+has produced a result reminiscent of a fax machine being fed 
+through a coffee grinder. 
+
+When judging the value of something like the Quartet, 
+you have to factor in what it might cost you to add decent 
+mic preamps to a more mundane interface, and also the cost 
+of a separate monitor controller. You also have to consider 
+logistics: where is everything going to fit? The Quartet 
+provides a compact solution capable of true ‘big boys’ 
+performance, and the minuscule quality difference between 
+
+
+it and those truly 
+£ £1258.80 including VAT. esoteric devices 
+T Sonic Distribution 
+
+
+costing 10 times 
++44 (0)845 500 2 500. 
+
+
+as much really is in 
+
+
+E apogee@sonic-distribution.com : 
+
+W > www.sonic-distribution.com the realm of ‘But 
+
+W www.apogeedigital.com will it affect record 
+sales?’ SHH 
+
+
+www.soundonsound.com / November 2012 
+
+
+ihe) 
+
+
+WAT OVAVALG 
+
+
+“Besides the excellent interviews and fascinating, 
+in-depth recording and mixing articles, | can 
+always depend on Sound On Sound for 
+complete, unbiased reviews of the latest 
+
+
+olsson 
+
+
+"As a professional | admire Sound On Sound 
+as one of the most trusted and credible 
+sources of inspiration and information.” 
+
+
+pro-audio gear. ” Jack Joseph Puig, mixer, producer, Grammy 
+
+
+Award winner (Rolling Stones, U2, Mary J 
+
+
+Bob Clearmountain, engineer, producer and Blige, Black Eyed Peas) 
+
+
+mixer, Grammy Award winner (Bruce Springsteen, 
+The Rolling Stones, Paul McCartney, INXS) 
+
+
+
+
+
+SOUND ON A OUND 
+
+
+The World's Best Recording Technology MEIEMAA 
+
+
+
+
+
+WUS PROD 
+
+
+
+
+
+
+
+
+
+
+RAE r E E a 
+! v F ; y ee fy On Fa ; j 
+MHT ECHMPWES j 4 CORAP TER ALY a Ws f d f we f 
+
+
+SOUND ON. 
+E 
+
+
+DEO IRDEFE NENT IL DEFTH paces 
+
+
+SouND 
+
+
+The Worlds Rest Recording Technalagy Magazine 
+
+
+=> novation i 
+
+
+S MININOVA 
+
+
+THE MINI SYNTH THAT PACKS SERIOUS =a 
+PERFORMANCE POWER =f 
+
+
+“fp i Sound magazine, 
+
+
+201 2 edition 
+
+
+Available on the 
+J App Store 
+
+
+
+
+
+SOUND ON SOUND 
+
+
+Tv Nota) Meat Reverdang Technology Maga 
+
+
+novation 
+
+
+BLS le 
+
+
+THE MINI SYNTH THAT PACKS SERIOUS 
+ANCE POWER 
+
+
+November 2012 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+The per dept "4 
+pE QUA CAKE 
+nok TOP TER por’ 
+nerd THESIZER 
+(TEE fORTE 
+see boo 
+
+
+: ' a 
+APOGEE QUARTET \ Ñ l RDS 
+DESKTOP INTERFACE N 
+
+
+$ TR 
+S pbcRETE À p 
+PT. = 
+=a CO us FOCUSRITE FORTE 
+= 5 oe Sook lee USB INTERFACE pet ire es 
+=" Lye ft rs T ust l 
+
+
+VERTIGO VSC2 DISCRETE ° 
+VCA COMPRESSOR 
+
+
+A CAREER ON THE BOARDS = 
+
+
+BTATO MIEN AS A LIVE SOUND ENGSEER 
+
+
+7 ~ CLASSIC TRACKS: OASIS; WONDERWALL = 
+
+
+pi 
+E 
+a 
+= E 
+E 
+E 
+= 
+
+
+ete a yo 
+rece 
+
+
+N 
+
+
+" 
+l 
+ki 
+
+
+
+
+
+VDO ONE LOG DOL PLEFOMMER PRO TOOLS MEASON SONAR CUBASE / UVE 
+
+
+
+
+
+Subscribe and Save Money! 
+
+
+Visit our subscriptions page at www.soundonsound.com/subscribe 
+for more information on the Sound On Sound App go to: www.soundonsound.com/app 
+
+
+Sound On Sound, Media House, Trafalgar Way, Bar Hill, Cambridge, CB23 8SO, United Kingdom 
+Email: subscribe@soundonsound.com Tel: +44 (0) 1954 789888 Fax: +44 (0) 1954 789895 
+
+
+All contents copyright © SOS Publications Group and/or its licensors, 1985-2012. All rights reserved. 
+The contents of this article are subject to worldwide copyright protection and reproduction in whole or part, whether mechanical or electronic, is expressly forbidden 
+
+
+without the prior written consent of the Publishers. Great care has been taken to ensure accuracy in the preparation of this article but neither Sound On Sound Limited 
+nor the publishers can be held responsible for its contents. The views expressed are those of the contributors and not necessarily those of the publishers 
+
+
