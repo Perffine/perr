@@ -1,6 +1,6 @@
 import { LiveImageShape } from '@/components/LiveImageShapeUtil'
 import { fastGetSvgAsImage } from '@/utils/screenshot'
-import * as fal from '@fal-ai/serverless-client'
+import { fal } from '@fal-ai/client'
 import { createContext, useContext, useEffect, useState } from 'react'
 import {
 	AssetRecordType,
