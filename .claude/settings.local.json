@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:docs.fal.ai)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:fal-ai.github.io)",
+      "Bash(git rm:*)",
+      "Bash(git rebase:*)",
+      "Bash(GIT_EDITOR=true git rebase:*)",
+      "Bash(git add:*)"
+    ]
+  }
+}
