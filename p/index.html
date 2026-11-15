@@ -1,22 +1,554 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Photoshop Class</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- YouTube refuses to play (Error 153) unless it's told which site embeds it,
+       so make sure the browser always sends the page's address. -->
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>Introduction to 3D Printing</title>
   <style>
-  
+    html, body {
+      margin: 0;
+      background: #dfe9ec;
+    }
+    body {
+      box-sizing: border-box;
+      min-height: 100vh;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+    }
+    /* Links beside the poster (below it on narrow screens). */
+    #side-links {
+      flex: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      font: 600 18px/1.3 system-ui, sans-serif;
+    }
+    #side-links a {
+      color: #1b75bb;
+      text-underline-offset: 3px;
+    }
+    #side-links a:hover,
+    #side-links a:focus-visible { color: #f7941d; }
+    @media (max-width: 720px) {
+      body { flex-direction: column; gap: 16px; }
+      #side-links {
+        order: 1;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px 28px;
+      }
+    }
+    /* Scale the poster to fit the window while keeping its 622x1030 shape. */
+    #poster {
+      display: block;
+      flex: 0 1 auto;
+      min-width: 0;
+      width: min(100%, calc((100vh - 32px) * 622 / 1030));
+      height: auto;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.18);
+    }
+
+    /* Hotspots are invisible until hovered or focused. */
+    .hotspot > * {
+      fill: transparent;
+      stroke: transparent;
+      stroke-width: 3;
+      transition: fill 0.15s, stroke 0.15s;
+      cursor: pointer;
+    }
+    .hotspot:hover > *,
+    .hotspot:focus-visible > * {
+      fill: rgba(255, 255, 255, 0.22);
+      stroke: #f7941d;
+    }
+    .hotspot:focus { outline: none; }
+
+    /* Add ?debug to the URL to see every clickable region outlined. */
+    .debug .hotspot > * { stroke: #e0218a; stroke-dasharray: 6 4; }
+
+    /* Video pop-up (sized so video + shortcuts panel fit the window height) */
+    #player {
+      width: min(92vw, 960px, calc((100vh - 220px) * 16 / 9));
+      min-width: min(92vw, 480px);
+      padding: 0;
+      border: none;
+      border-radius: 10px;
+      background: #000;
+      overflow: hidden;
+    }
+    #player:focus { outline: none; }
+    #player::backdrop { background: rgba(10, 20, 30, 0.75); }
+    #player header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 8px 8px 16px;
+      background: #1b75bb;
+      color: #fff;
+      font: 600 16px/1.3 system-ui, sans-serif;
+    }
+    #player-close {
+      border: none;
+      background: transparent;
+      color: #fff;
+      font-size: 28px;
+      line-height: 1;
+      width: 40px;
+      height: 40px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    #player-close:hover,
+    #player-close:focus-visible { background: rgba(255, 255, 255, 0.2); }
+    #player-video {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      background: #000;
+    }
+    #player-video:fullscreen { aspect-ratio: auto; }
+    #player-video iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    /* Short message over the video when a shortcut is used, e.g. "1.5×" */
+    #player-toast {
+      position: absolute;
+      top: 14%;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 8px 16px;
+      border-radius: 8px;
+      background: rgba(0, 0, 0, 0.7);
+      color: #fff;
+      font: 600 20px/1.2 system-ui, sans-serif;
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+    #player-toast.show { opacity: 1; transition: none; }
+
+    /* Keyboard shortcuts panel under the video */
+    #shortcuts {
+      padding: 8px 16px 10px;
+      background: #15212b;
+      color: #d7e3ea;
+      font: 14px/1.4 system-ui, sans-serif;
+    }
+    #shortcuts summary {
+      cursor: pointer;
+      font-weight: 600;
+      color: #fff;
+      width: fit-content;
+    }
+    #shortcuts summary span { font-weight: 400; color: #9fb3c0; }
+    #shortcuts ul {
+      list-style: none;
+      margin: 8px 0 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 22px;
+    }
+    #shortcuts kbd {
+      display: inline-block;
+      min-width: 1.4em;
+      margin-right: 3px;
+      padding: 1px 6px;
+      border: 1px solid #4d6575;
+      border-bottom-width: 2px;
+      border-radius: 4px;
+      background: #22323e;
+      color: #fff;
+      font: 600 13px/1.4 system-ui, sans-serif;
+      text-align: center;
+    }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Photoshop Class</h1>
-  </header>
+  <!-- Replace each "#" with the real link. -->
+  <nav id="side-links">
+    <a href="https://youtu.be/d7jV5-Irtf0" target="_blank" >Watch full tutorial here</a>
+    <a href="https://drive.google.com/drive/folders/19vuuceynTqT3_zQweWnUvLyPQnk2tHE3?usp=sharing" target="_blank" >Download class files here</a>
+  </nav>
 
-  <main>
+  <!--
+    The poster image with clickable regions drawn on top of it.
+    Region coordinates are in the image's own pixels (622 x 1030), so they
+    stay lined up at any screen size. Shapes listed later sit on top of
+    earlier ones (e.g. the vase sits on top of the printer).
+  -->
+  <svg id="poster" viewBox="0 0 622 1030" role="img" aria-label="Introduction to 3D Printing poster">
+    <image href="media/final_poster.png" width="622" height="1030"/>
 
-  </main>
+    <!-- Everything not covered by another region; highlights the whole poster.
+         Inset by half the stroke width so the full orange border shows at the edges. -->
+    <a class="hotspot background" data-link="background"><title>Background</title>
+      <rect x="1.5" y="1.5" width="619" height="1027"/>
+    </a>
 
+    <a class="hotspot" data-link="blueRectangle"><title>Rectangle</title>
+      <rect x="0" y="898" width="622" height="132"/>
+    </a>
 
+    <a class="hotspot" data-link="FPLLogo"><title>FPL logo</title>
+      <rect x="356" y="918" width="236" height="104" rx="6"/>
+    </a>
+
+    <a class="hotspot" data-link="introductionTo"><title>Format 'Introduction to' text</title>
+      <rect x="64" y="48" width="492" height="54" rx="6"/>
+    </a>
+
+    <a class="hotspot" data-link="3dPrinting"><title>Format '3D Printing' text</title>
+      <rect x="56" y="102" width="502" height="100" rx="6"/>
+    </a>
+
+    <!-- Text blocks: all share one link -->
+    <a class="hotspot" data-link="textBlock"><title>Add Text Blocks</title>
+      <rect x="126" y="668" width="190" height="116" rx="6"/>
+    </a>
+    <a class="hotspot" data-link="textBlock"><title>Add  Text Blocks</title>
+      <rect x="388" y="668" width="194" height="116" rx="6"/>
+    </a>
+    <a class="hotspot" data-link="textBlock"><title>Add Text Blocks</title>
+      <rect x="118" y="818" width="392" height="66" rx="6"/>
+    </a>
+    <a class="hotspot" data-link="textBlock"><title>Add Text Blocks</title>
+      <rect x="40" y="924" width="296" height="76" rx="6"/>
+    </a>
+
+    <!-- Calendar and location-pin icons: each has its own section -->
+    <a class="hotspot" data-link="calendarIcon"><title>Add and isolate calendar icon</title>
+      <rect x="34" y="674" width="88" height="90" rx="6"/>
+    </a>
+    <a class="hotspot" data-link="locationIcon"><title>Add and isolate location icon</title>
+      <rect x="336" y="686" width="48" height="62" rx="6"/>
+    </a>
+
+    <!-- Divider lines: all share one link (hit areas are padded so thin lines are easy to click) -->
+    <a class="hotspot" data-link="divider"><title>Dividers</title>
+      <rect x="68" y="632" width="502" height="16" rx="4"/>
+    </a>
+    <a class="hotspot" data-link="divider"><title>Dividers</title>
+      <rect x="320" y="660" width="16" height="122" rx="4"/>
+    </a>
+    <a class="hotspot" data-link="divider"><title>Dividers</title>
+      <rect x="68" y="792" width="494" height="16" rx="4"/>
+    </a>
+
+    <a class="hotspot" data-link="printer"><title>Add and isolate 3D printer</title>
+      <polygon points="262,212 418,212 418,318 442,326 448,528 418,540 392,562 300,616 176,616 168,560 176,540 168,500 178,350 205,322 262,300"/>
+    </a>
+
+    <a class="hotspot" data-link="vase"><title>Add and isolate Vase</title>
+      <polygon points="260,402 332,394 318,440 312,470 326,500 322,542 270,546 262,500 276,462 266,430"/>
+    </a>
+
+    <a class="hotspot" data-link="filament"><title>Add and isolate filament roll</title>
+      <ellipse cx="486" cy="569" rx="72" ry="53"/>
+    </a>
+  </svg>
+
+  <!-- Pop-up that plays one section of the video -->
+  <dialog id="player" aria-labelledby="player-title" tabindex="-1">
+    <header>
+      <span id="player-title"></span>
+      <button id="player-close" aria-label="Close video">&times;</button>
+    </header>
+    <div id="player-video">
+      <!-- YouTube's player API swaps this div for the video iframe -->
+      <div id="player-frame"></div>
+      <div id="player-toast" role="status"></div>
+    </div>
+    <details id="shortcuts" open>
+      <summary>Keyboard shortcuts <span>(press ? to show or hide)</span></summary>
+      <ul>
+        <li><kbd>Space</kbd> Play / pause</li>
+        <li><kbd>&larr;</kbd><kbd>&rarr;</kbd> Back / forward 5 s</li>
+        <li><kbd>J</kbd><kbd>L</kbd> Back / forward 10 s</li>
+        <li><kbd>,</kbd><kbd>.</kbd> Previous / next frame</li>
+        <li><kbd>&lt;</kbd><kbd>&gt;</kbd> Slower / faster (Shift + , or .)</li>
+        <li><kbd>&uarr;</kbd><kbd>&darr;</kbd> Volume</li>
+        <li><kbd>M</kbd> Mute</li>
+        <li><kbd>C</kbd> Captions</li>
+        <li><kbd>F</kbd> Full screen</li>
+        <li><kbd>Esc</kbd> Close</li>
+      </ul>
+    </details>
+  </dialog>
+
+  <script>
+    // The YouTube video to play: the part after "v=" or "youtu.be/" in its link.
+    const VIDEO_ID = "d7jV5-Irtf0";
+
+    // Which part of the video each region plays, as "minutes:seconds".
+    // The video stops at "end"; leave "end" out to let it keep playing.
+    const SECTIONS = {
+      background:     { title: "Background Polish",      start: "12:15", end: "13:20" },
+      introductionTo: { title: "Format 'IntroductionTo'",start: "10:43", end: "11:15" },
+      "3dPrinting":   { title: "Format '3D Printing'",     start: "11:32", end: "12:14" },
+      printer:        { title: "Add and Isolate 3D printer",  start: "1:26", end: "7:34" },
+      vase:           { title: "Add and Isolate Vase",   start: "1:41", end: "2:52" },
+      filament:       { title: "Add and Isolate Filament Roll", start: "13:53", end: "14:15" },
+      textBlock:      { title: "Add Text Blocks",        start: "9:45", end: "10:36" },
+      locationIcon:   { title: "Add and Isolate Location Icon", start: "13:22", end: "13:33" },
+      calendarIcon:   { title: "Add and Isolate Calendar Icon", start: "13:34", end: "13:43" },
+      divider:        { title: "Add Dividers",           start: "8:40", end: "9:06" },
+      blueRectangle:  { title: "Add Rectangle",          start: "9:07", end: "9:25" },
+      FPLLogo:        { title: "Add FPL Logo",           start: "10:24", end: "10:30" },
+    };
+
+    function toSeconds(time) {
+      const [min, sec] = time.split(":").map(Number);
+      return min * 60 + sec;
+    }
+
+    const player = document.getElementById("player");          // the pop-up <dialog>
+    const playerTitle = document.getElementById("player-title");
+    const videoBox = document.getElementById("player-video");
+    const toast = document.getElementById("player-toast");
+    const shortcuts = document.getElementById("shortcuts");
+
+    let yt = null;          // YouTube's player object, once it's ready
+    let current = null;     // the section being shown
+    let speed = 1;
+    let volume = 100;
+    let captionsOn = false;
+    let seekTarget = 0;     // where the last jump went, and when (see currentTime)
+    let seekAt = 0;
+    const FRAME = 1 / 30;   // one frame, in seconds
+
+    // YouTube's API script (loaded at the end of the page) calls this once it has loaded.
+    window.onYouTubeIframeAPIReady = () => {
+      new YT.Player("player-frame", {
+        host: "https://www.youtube-nocookie.com",
+        videoId: VIDEO_ID,
+        playerVars: { rel: 0, playsinline: 1, origin: location.origin },
+        events: {
+          onReady: (event) => {
+            yt = event.target;
+            volume = yt.getVolume();
+            // If someone clicked a region before the player finished loading, start it now.
+            if (player.open && current) playSection(current);
+          },
+          onPlaybackRateChange: (event) => { speed = event.data; },
+          // Loading a new section can drop captions; turn them back on if the viewer had them on.
+          onStateChange: (event) => {
+            if (event.data === YT.PlayerState.PLAYING && captionsOn) yt.loadModule("captions");
+          },
+        },
+      });
+    };
+
+    function playSection(section) {
+      const options = { videoId: VIDEO_ID, startSeconds: toSeconds(section.start) };
+      if (section.end) options.endSeconds = toSeconds(section.end);
+      seekAt = 0;
+      yt.loadVideoById(options);
+    }
+
+    function openSection(section) {
+      current = section;
+      playerTitle.textContent = section.title;
+      player.showModal();
+      player.focus();  // keyboard shortcuts are handled by this page, so keep focus here
+      if (yt) playSection(section);
+    }
+
+    // ---- Keyboard shortcuts ----
+    // The embedded player doesn't support every YouTube shortcut (no speed or frame
+    // keys), so the page handles them all and tells the player what to do.
+
+    let toastTimer;
+    function showToast(text) {
+      toast.textContent = text;
+      toast.classList.add("show");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove("show"), 800);
+    }
+
+    function togglePlay() {
+      const state = yt.getPlayerState();
+      const atEnd = current.end && yt.getCurrentTime() >= toSeconds(current.end) - 0.5;
+      if (state === YT.PlayerState.ENDED || (atEnd && state !== YT.PlayerState.PLAYING)) {
+        playSection(current);  // replay the section from its start
+        showToast("Replay");
+      } else if (state === YT.PlayerState.PLAYING || state === YT.PlayerState.BUFFERING) {
+        yt.pauseVideo();
+        showToast("Paused");
+      } else {
+        yt.playVideo();
+        showToast("Play");
+      }
+    }
+
+    // The player reports its time with a short delay, so straight after a jump,
+    // carry on from where that jump went. Otherwise quick repeated presses
+    // (→ → → or . . .) would each start from the old time and cancel out.
+    function currentTime() {
+      return Date.now() - seekAt < 1000 ? seekTarget : yt.getCurrentTime();
+    }
+
+    function jumpTo(time) {
+      seekTarget = Math.max(0, time);
+      seekAt = Date.now();
+      yt.seekTo(seekTarget, true);
+    }
+
+    function seekBy(seconds) {
+      jumpTo(currentTime() + seconds);
+      showToast(`${seconds > 0 ? "+" : "−"}${Math.abs(seconds)} s`);
+    }
+
+    function stepFrame(direction) {
+      yt.pauseVideo();
+      jumpTo(currentTime() + direction * FRAME);
+      showToast(direction > 0 ? "Next frame ›" : "‹ Previous frame");
+    }
+
+    function changeSpeed(direction) {
+      const rates = yt.getAvailablePlaybackRates();  // e.g. [0.25, 0.5, 0.75, 1, 1.25, ... 2]
+      let i = rates.indexOf(speed);
+      if (i === -1) i = rates.indexOf(1);
+      speed = rates[Math.min(rates.length - 1, Math.max(0, i + direction))];
+      yt.setPlaybackRate(speed);
+      showToast(`Speed ${speed}×`);
+    }
+
+    function changeVolume(step) {
+      volume = Math.min(100, Math.max(0, volume + step));
+      yt.setVolume(volume);
+      if (yt.isMuted()) yt.unMute();
+      showToast(`Volume ${volume}%`);
+    }
+
+    function toggleMute() {
+      if (yt.isMuted()) { yt.unMute(); showToast("Sound on"); }
+      else { yt.mute(); showToast("Muted"); }
+    }
+
+    // Uses the player's unofficial captions module. (Its "tracklist" option reports
+    // an empty list even when captions exist, so it can't be used to check for them.)
+    function toggleCaptions() {
+      captionsOn = !captionsOn;
+      if (captionsOn) yt.loadModule("captions");
+      else yt.unloadModule("captions");
+      showToast(captionsOn ? "Captions on" : "Captions off");
+    }
+
+    function toggleFullscreen() {
+      if (document.fullscreenElement) document.exitFullscreen();
+      else videoBox.requestFullscreen().catch(() => showToast("Full screen isn't available here"));
+    }
+
+    // Esc leaves full screen; make sure that same press doesn't also close the pop-up.
+    let leftFullscreenAt = 0;
+    document.addEventListener("fullscreenchange", () => {
+      if (!document.fullscreenElement) leftFullscreenAt = Date.now();
+    });
+    player.addEventListener("cancel", (event) => {
+      if (document.fullscreenElement || Date.now() - leftFullscreenAt < 500) event.preventDefault();
+    });
+
+    function toggleShortcuts() {
+      shortcuts.open = !shortcuts.open;
+    }
+
+    const KEYS = {
+      " ": togglePlay,
+      k: togglePlay,
+      ArrowLeft: () => seekBy(-5),
+      ArrowRight: () => seekBy(5),
+      j: () => seekBy(-10),
+      l: () => seekBy(10),
+      ",": () => stepFrame(-1),
+      ".": () => stepFrame(1),
+      "<": () => changeSpeed(-1),
+      ">": () => changeSpeed(1),
+      ArrowUp: () => changeVolume(5),
+      ArrowDown: () => changeVolume(-5),
+      m: toggleMute,
+      c: toggleCaptions,
+      f: toggleFullscreen,
+    };
+
+    document.addEventListener("keydown", (event) => {
+      if (!player.open || event.ctrlKey || event.metaKey || event.altKey) return;
+      // Let Space/Enter work normally on the close button and the shortcuts toggle.
+      if ((event.key === " " || event.key === "Enter") && event.target.matches("button, summary")) return;
+      if (event.key === "?") {
+        event.preventDefault();
+        toggleShortcuts();
+        return;
+      }
+      let key = event.key.length === 1 ? event.key.toLowerCase() : event.key;
+      // Some keyboards report Shift+, and Shift+. as "," and "." rather than "<" and ">".
+      if (event.shiftKey && key === ",") key = "<";
+      if (event.shiftKey && key === ".") key = ">";
+      const action = KEYS[key];
+      if (!action) return;
+      event.preventDefault();
+      if (yt && current) action();
+    });
+
+    // Clicking the video moves keyboard focus into YouTube's frame, where this page
+    // can't hear key presses. Bring focus straight back so the shortcuts keep working.
+    window.addEventListener("blur", () => {
+      if (!player.open) return;
+      setTimeout(() => {
+        if (document.activeElement && document.activeElement.tagName === "IFRAME") player.focus();
+      });
+    });
+
+    // Remember whether the viewer hid the shortcuts panel.
+    try {
+      if (localStorage.getItem("hideShortcuts") === "1") shortcuts.open = false;
+    } catch (error) { /* storage unavailable: just show the panel */ }
+    shortcuts.addEventListener("toggle", () => {
+      try { localStorage.setItem("hideShortcuts", shortcuts.open ? "0" : "1"); } catch (error) {}
+    });
+
+    for (const a of document.querySelectorAll(".hotspot")) {
+      const section = SECTIONS[a.dataset.link];
+      if (!section) {
+        // A typo here would otherwise stop every hotspot after this one from working.
+        console.warn(`No SECTIONS entry named "${a.dataset.link}"; that region won't play anything.`);
+        continue;
+      }
+      // A plain YouTube link as a fallback (e.g. for "open in new tab").
+      a.setAttribute("href", `https://youtu.be/${VIDEO_ID}?t=${toSeconds(section.start)}`);
+      a.addEventListener("click", (event) => {
+        event.preventDefault();
+        openSection(section);
+      });
+    }
+
+    document.getElementById("player-close").addEventListener("click", () => player.close());
+    // Clicking the dark area around the video closes it too.
+    player.addEventListener("click", (event) => {
+      if (event.target === player) player.close();
+    });
+    // Stop the video when the pop-up closes.
+    player.addEventListener("close", () => {
+      if (yt) yt.stopVideo();
+      if (document.fullscreenElement) document.exitFullscreen();
+    });
+
+    if (new URLSearchParams(location.search).has("debug")) {
+      document.body.classList.add("debug");
+    }
+  </script>
+  <!-- YouTube's player API; calls onYouTubeIframeAPIReady above when loaded -->
+  <script src="https://www.youtube.com/iframe_api" async></script>
 </body>
 </html>
